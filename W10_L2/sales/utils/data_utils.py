@@ -9,7 +9,7 @@ def load_data(filepath:str) -> pd.DataFrame:
 
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.dropna()
-    df['Revenue'] = df['Units'] = df['Price']
+    df['Revenue'] = df['Units'] * df['Price']
     df['Month'] = df['Date'].dt.to_period('M')
     return df
 
@@ -72,7 +72,8 @@ def save_results(df: pd.DataFrame, by_product: pd.Series,
 
     # Revenue by month
     by_month_df = by_month.reset_index()
-    by_month_df['Month'] = by_month_df['Month'].astype(str)
+    # by_month_df['Month'] = by_month_df['Month'].astype(str)
+    by_month_df.iloc[:, 0] = by_month_df.iloc[:, 0].astype(str)
     by_month_df.rename(columns={'Revenue': 'Revenue ($)'}, inplace=True)
     by_month_df.to_csv(os.path.join(output_dir, 'revenue_by_month.csv'), index=False)
 

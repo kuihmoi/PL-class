@@ -1,0 +1,11 @@
+{
+    "row_count": 3,
+    "columns": [
+        "Name",
+        "Age",
+        "City"
+    ],
+    "mean_age": 28.333333333333332,
+    "pandas_version": "3.0.2",
+    "datetime": "2026-05-07T15:17:43.784080"
+}

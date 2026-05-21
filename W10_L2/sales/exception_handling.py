@@ -11,7 +11,8 @@ DATA_FILE = 'sales/data/sales.csv'
 def basic_try_except():
     # loading a file that does not exist
     try:
-        df = pd.read_csv('sales/data/non_existent_file.csv')
+        # df = pd.read_csv('sales/data/non_existent_file.csv')
+        df = pd.read_csv('data/sales.csv')
     except Exception as e:
         print("An error occurred, but we handle it, program keeps running.")
 
@@ -134,4 +135,70 @@ finally_clause()
 ###########################################################################################################################
 # 6. RAISING EXCEPTIONS: to signal that something is wrong to the CALLER of your function
 
+def raising_exceptions() -> None:
+    # a function that calculates revenue, validates input types adn values, and raises appropriate TypeError and ValueError exceptions for invalid inputs.
+    def calculate_revenue(units: int, price: float) -> float:
+        if not isinstance(units, int):
+            raise TypeError(f"Units must be an int, got {type(units).__name__!r}.")
+        if not isinstance(price, (int, float)):
+            raise TypeError(
+                f"price must be a numeric, got {type(price).__name__!r}.")
+        if units < 0:
+            raise ValueError("Units cannot be negative.")
+        if price < 0:
+            raise ValueError("Price cannot be negative.")
+        return units * price
+
+raising_exceptions()
+
+###########################################################################################################################
 # 7. CUSTOM EXCEPTIONS: Define your own exception classes by inheriting from Exception.
+
+def custom_exceptions() -> None:
+    # a custom Python exception class names SalesDataError to represent errors related to sales data processing 
+    class SalesDataError(Exception): # inherits from Python's built-in Exception class
+        """Base exception for all sales-data problems"""
+    # Two specific error types that inherit from SalesDataError:
+    class NegativeUnitsError(SalesDataError):
+        def __init__(self, units: int, product: str) -> None:
+            super().__init__(f"Negative units ({units}) for '{product}'")
+            self.units = units
+            self.product = product
+    # Another specific error type for unknown regions:
+
+    class UnknownRegionError(SalesDataError):
+        VALID = ["North", "South", "East", "West"]
+
+        def __init__(self, region: str) -> None:
+            super().__init__(
+                f"Unknown region '{region}'. Valid: {self.VALID}"
+            )
+            self.region = region
+    # A function that validates sales records and raises these custom exceptions when business rules are violated
+
+    def validate_sale(product: str, region: str, units: int) -> None:
+        if units < 0:
+            raise NegativeUnitsError(units, product)
+        if region not in UnknownRegionError.VALID:
+            raise UnknownRegionError(region)
+        
+    records = [
+        ("Laptop", "North", 5), #valid
+        ("Phone", "Mars", 10),  # unkown region
+        ("Tablet", "South", -2) # negative units
+    ]
+    # A loop that processes sales records and uses try-except blocks to handle the custom exceptions, allowing the program to continue processing subsequent records even if some records are invalid.
+    for product, region, units in records:
+        try:
+            validate_sale(product, region, units)
+            print(f"OK    -{product} / {region} / units={units}")
+        except NegativeUnitsError as e:
+            print(f"ERROR - NegativeUnitsError: {e}   (e.units={e.units})")
+        except UnknownRegionError as e:
+            print(
+                f"ERROR - UnknownRegionError: {e}   (e.region={e.region!r})"
+            )
+        except SalesDataError as e:
+            print(f"ERROR - SalesDataError: {e}")
+
+custom_exceptions()

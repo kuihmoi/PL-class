@@ -1,0 +1,9 @@
+{
+    "project": "WebApp",
+    "version": "1.0.0",
+    "description": "A sample web application",
+    "dependencies": [
+        "requests",
+        "flask"
+    ]
+}

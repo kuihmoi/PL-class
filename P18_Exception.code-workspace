@@ -1,13 +1,22 @@
 {
-	"folders": [
-		{
-			"path": "P18_Exception"
-		},
-		{
-			"path": "W10_L2"
-		},
-		{
-			"path": "W11_L2"
-		}
-	]
+  "folders": [
+	{
+		"path": "P18_Exception"
+	},
+	{
+		"path": "P19_GENERATOR"
+	},
+	{
+		"path": "W10_L2"
+	},
+	{
+		"path": "W11_L2"
+	},
+	{
+		"path": "W12_L2"
+	},
+	{
+		"path": "P20_Decorators"
+	}
+]
 }

@@ -62,7 +62,7 @@ print(f"function doc: {say_hello.__doc__}")  # Output: function docstring: This 
 
 from functools import wraps
 # decarotor that accepts its own parameter
-# decorator that repeats a fucntions execution a specified number of times
+# decorator that repeats a functions execution a specified number of times
 def repeat(n):
     def decorator(func):
         @wraps(func)

@@ -26,6 +26,8 @@
 
 #-------------------------------------------------------
 
+# copy a binary file in environment 1
+
 # input_file = 'python.png'
 
 # output_file = 'python_copy.png'
@@ -43,6 +45,8 @@
 
 #-------------------------------------------------------
 
+#getting size of image
+
 # from PIL import Image
 # import os
 
@@ -51,14 +55,17 @@
 # image = Image.open(img_path)
 # width, height = image.size
 
+# #to get in bytes
 # f_s = os.path.getsize(img_path)
 # print(f'image size: {f_s} bytes')
 
+# #to get in KB
 # f_s_k = f_s / 1024
 # print(f'image size: {f_s_k: .2f} KB')
 
+# #resizing image
 # width, height = image.size
-# new_size = (int(width / 2), int(height / 2))
+# new_size = (int(width / 4), int(height / 4))
 # resize_image = image.resize(new_size)
 # resize_image.save('python_resized.png')
 

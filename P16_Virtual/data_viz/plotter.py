@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from typing import List
 
+#generating some plotting for histogram
 def plot_histogram(data: List[float], title:str = "Histogram", xlabel: str = "Values", 
                    ylabel:str = "Frequency", bins: int = 5, color: str = "skyblue"):
     plt.figure(figsize=(8,6))

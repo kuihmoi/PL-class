@@ -1,79 +1,79 @@
 import json
 
-# json_string = '{"project": "WebApp", "version": "1.0.0", "description": "A sample web application", "dependencies":["requests", "flask"]}'
-# data = json.loads(json_string)
-# print(data)
+json_string = '{"project": "WebApp", "version": "1.0.0", "description": "A sample web application", "dependencies":["requests", "flask"]}'
+data = json.loads(json_string)
+print(data)
 
-# # access it and print the project name
-# print(data["project"])
-# print(data["dependencies"][1])
+# access it and print the project name
+print(data["project"])
+print(data["dependencies"][1])
 
-# # saving data into a json file
-# with open("config.json","w") as file:
-#     json.dump(data,file,indent=4)
-#     print("Data written to config.json")
+# saving data into a json file
+with open("config.json","w") as file:
+    json.dump(data,file,indent=4)
+    print("Data written to config.json")
 
-# # how to read from a json file
-# with open("config.json","r") as file:
-#     data = json.load(file)
-# print(data)
+# how to read from a json file
+with open("config.json","r") as file:
+    data = json.load(file)
+print(data)
 
-# data = {"compiler": "gcc", "version": "9.3.0", "flags": ["-O2", "-Wall"]}
-# json_string = json.dumps(data, indent=4)
-# print(json_string)
+data = {"compiler": "gcc", "version": "9.3.0", "flags": ["-O2", "-Wall"]}
+json_string = json.dumps(data, indent=4)
+print(json_string)
 
-# # how to handle json errors
-# try:
-#     invalid_json = '{"compiler": "gcc", version:11.2}' #missing quotation as error
-#     data = json.loads(invalid_json)
-# except json.JSONDecodeError as e:
-#     print(f"JSONDecodeError: {e}")
+# how to handle json errors
+try:
+    invalid_json = '{"compiler": "gcc", version:11.2}' #missing quotation as error
+    data = json.loads(invalid_json)
+except json.JSONDecodeError as e:
+    print(f"JSONDecodeError: {e}")
 
-# # correct version to show
-# try:
-#     invalid_json = '{"compiler": "gcc", "version":"11.2"}' #missing quotation as error
-#     data = json.loads(invalid_json)
-#     print(data)
-# except json.JSONDecodeError as e:
-#     print(f"JSONDecodeError: {e}")
+# correct version to show
+try:
+    invalid_json = '{"compiler": "gcc", "version":"11.2"}' #missing quotation as error
+    data = json.loads(invalid_json)
+    print(data)
+except json.JSONDecodeError as e:
+    print(f"JSONDecodeError: {e}")
 
-# # parse a json string for server configuration
-# json_string ='''
-# {
-#     "server": "API Server",
-#     "port": 8000,
-#     "endpoints": ["users", "products"],
-#     "settings":{
-#         "ssl": true,
-#         "timeout": 30
-#     }
-# }
-# '''
+# parse a json string for server configuration
+json_string ='''
+{
+    "server": "API Server",
+    "port": 8000,
+    "endpoints": ["users", "products"],
+    "settings":{
+        "ssl": true,
+        "timeout": 30
+    }
+}
+'''
 
-# data =  json.loads(json_string)
-# print("Server Name:", data["server"])
+data =  json.loads(json_string)
+print("Server Name:", data["server"])
 
-# print("First Endpoint:", data['endpoints'][0])
+print("First Endpoint:", data['endpoints'][0])
 
-# print("SSL Enabled:", data["settings"]["ssl"])
+print("SSL Enabled:", data["settings"]["ssl"])
 
-# # next eg: create and read json file for python package dependencies
+# next eg: create and read json file for python package dependencies
 
-# data = {
-#     "package": "my_app",
-#     "version": "1.0.0",
-#     "dependencies": [
-#         {"name": "requests", "version": "2.25.1"},
-#         {"name": "flask", "version": "1.1.2"},
-#     ]
-# }
+data = {
+    "package": "my_app",
+    "version": "1.0.0",
+    "dependencies": [
+        {"name": "requests", "version": "2.25.1"},
+        {"name": "flask", "version": "1.1.2"},
+    ]
+}
 
-# with open("requirements.json", "w") as file:
-#     json.dump(data, file, indent=4)
+with open("requirements.json", "w") as file:
+    json.dump(data, file, indent=4)
 
-# with open("requirements.json", "r") as file:
-#     requirements = json.load(file)
-#     print(json.dumps(requirements, indent=4))
+with open("requirements.json", "r") as file:
+    requirements = json.load(file)
+    print(json.dumps(requirements, indent=4))
 
 # next eg: parse a json for code repositories with nested commits
 json_string = '''

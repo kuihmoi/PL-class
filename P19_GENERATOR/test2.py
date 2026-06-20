@@ -42,11 +42,11 @@ print(list(x))
 # generator for an infinite sequence of prime numbers with a way to control output
 def is_prime(n):
     if n <= 1:
-        return False
+        return False  #less than 2 cannot be prime
     for i in range(2, int(n**0.5) + 1):
         if n % i == 0:
             return False
-    return True
+    return True #otherwise true
 
 def prime_generator():
     n = 2
@@ -112,7 +112,7 @@ def read(file_path):
     try:
         with open(file_path, 'r') as f:
             for line in f:
-                yield line.strip()
+                yield line.strip() #produce each line without trading new line
     except FileNotFoundError:
         print("File not found")
 
